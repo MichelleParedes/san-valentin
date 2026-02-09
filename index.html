@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>San Valentín 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <!-- Lluvia constante de corazones -->
+  <div id="petals" class="petals" aria-hidden="true"></div>
+
+  <!-- Música de fondo -->
+  <audio id="bgMusic" src="musica.mp3" preload="auto" loop></audio>
+
+  <main class="wrap">
+    <!-- PANTALLA 1 -->
+    <section id="screenHome" class="home">
+      <h2 class="title">TE AMO</h2>
+
+      <button id="openBtn" type="button" class="heartBtn" aria-label="Abrir sorpresa">
+        <span class="heartShape" aria-hidden="true"></span>
+      </button>
+
+      <p class="tapText"><br>Toca el corazón</p>
+    </section>
+
+    <!-- PANTALLA 2 -->
+    <section id="screenLetter" class="card letter hidden">
+      <div class="letter-grid">
+        <div class="letter-text">
+          <p class="to">Para Nicole, el amor de mi vida:</p>
+
+          <p class="msg">
+            Si pudiera elegir un lugar seguro, sería en tus brazos.
+            Gracias por existir y por hacer mis días más bonitos.
+          </p>
+
+          <p class="msg">
+            es mi forma de decirte que te elijo hoy y siempre. 💗
+          </p>
+
+          <p class="from">Con amor, <strong>Michelle</strong> 🫶</p>
+
+          <div class="counter">
+            <div class="counter-title">Mi amor por ti comenzó hace…</div>
+            <div id="timer" class="counter-time">—</div>
+            <div class="counter-sub">días · horas · minutos · segundos</div>
+          </div>
+
+          <div class="actions">
+            <button id="backBtn" type="button" class="btn ghost">← Volver</button>
+          </div>
+        </div>
+
+        <div class="rightImgWrap">
+          <img class="rightImg" src="tortugas.jpg" alt="Tortuguitas en el espacio" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

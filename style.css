@@ -1,0 +1,220 @@
+:root{
+  --pink1:#ff4d8d;
+  --pink2:#ff7bb3;
+  --card:#fff3ea;
+  --text:#2a1a2f;
+  --shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Fondo */
+.bg{
+  position:fixed; inset:0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,77,141,.35), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,123,179,.25), transparent 45%),
+    radial-gradient(circle at 50% 70%, rgba(255,77,141,.18), transparent 55%),
+    linear-gradient(180deg, #2a0f2a 0%, #120916 100%);
+  z-index:-3;
+}
+.bg::before{
+  content:"";
+  position:absolute; inset:-40px;
+  background-image: radial-gradient(circle, rgba(255,255,255,.12) 2px, transparent 3px);
+  background-size: 26px 26px;
+  opacity:.25;
+}
+
+/* Lluvia delante */
+.petals{
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index: 9999;
+}
+
+.wrap{
+  width:min(1200px, 94vw);
+  margin: 0 auto;
+  padding: 18px 0 60px;
+}
+
+/* ✅ PANTALLA 1 con bordes redondeados */
+.home{
+  background: var(--card);
+  color: var(--text);
+
+  border-radius: 28px;        /* ✅ redondeado */
+  box-shadow: var(--shadow);
+  overflow: hidden;           /* ✅ para que nada se salga */
+
+  margin: 18px auto 0;        /* ✅ se note el redondeado */
+  padding: 60px 18px 40px;
+  min-height: calc(100vh - 70px);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+}
+
+.title{
+  margin: 0;
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+/* Corazón */
+.heartBtn{
+  margin-top: 96px;  /* no tapa letras */
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding: 0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heartShape{
+  width: 230px;
+  height: 230px;
+  background: linear-gradient(135deg, var(--pink1), var(--pink2));
+  transform: rotate(45deg);
+  border-radius: 36px;
+  position:relative;
+  box-shadow: 0 24px 40px rgba(255,77,141,.30);
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+.heartShape::before,
+.heartShape::after{
+  content:"";
+  position:absolute;
+  width: 230px;
+  height: 230px;
+  background: inherit;
+  border-radius: 999px;
+}
+.heartShape::before{ left:-108px; top:0; }
+.heartShape::after{ left:0; top:-108px; }
+
+@keyframes pulse{
+  0%,100%{ transform: rotate(45deg) scale(1); }
+  50%{ transform: rotate(45deg) scale(1.05); }
+}
+
+.tapText{
+  margin: 22px 0 0;
+  font-weight: 900;
+  color:#5b2b64;
+  font-size: 18px;
+}
+
+.hidden{ display:none; }
+
+/* ✅ PANTALLA 2 con bordes redondeados (y que se note) */
+.card{
+  background: var(--card);
+  color: var(--text);
+
+  border-radius: 28px;        /* ✅ redondeado */
+  box-shadow: var(--shadow);
+  overflow: hidden;           /* ✅ recorta bordes internos */
+
+  padding: 22px;
+  margin: 22px auto 0;        /* ✅ se note el redondeado */
+}
+
+/* Layout carta */
+.letter-grid{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 18px;
+  align-items:center;
+}
+
+@media (max-width: 900px){
+  .letter-grid{ grid-template-columns: 1fr; }
+  .rightImg{ width: min(360px, 84vw); }
+}
+
+.to{ margin: 0 0 10px; font-weight:900; }
+.msg{ margin: 10px 0; line-height: 1.55; }
+.from{ margin-top: 14px; font-size: 16px; }
+
+.counter{
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,77,141,.12);
+  border: 1px solid rgba(255,77,141,.25);
+}
+.counter-title{ font-weight:900; margin-bottom: 8px; }
+.counter-time{ font-size: clamp(20px, 4vw, 30px); font-weight:900; }
+.counter-sub{ opacity:.7; font-size: 12px; margin-top: 4px; }
+
+.actions{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:none;
+  background: linear-gradient(135deg, var(--pink1), var(--pink2));
+  color:white;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow: 0 12px 20px rgba(255,77,141,.25);
+}
+
+.btn.ghost{
+  background: transparent;
+  color: #4a1e55;
+  border: 1px solid rgba(74,30,85,.25);
+  box-shadow:none;
+}
+
+/* Tortugas derecha */
+.rightImgWrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.rightImg{
+  width: min(420px, 90%);
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 18px 30px rgba(0,0,0,.20);
+  outline: 3px solid rgba(255,255,255,.12);
+}
+
+/* Corazones cayendo */
+.petal{
+  position: fixed;
+  top: -30px;
+  left: 0;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: .75; /* un poquito menos para que no moleste */
+  will-change: transform, opacity;
+  filter: drop-shadow(0 8px 10px rgba(255,77,141,.18));
+}
